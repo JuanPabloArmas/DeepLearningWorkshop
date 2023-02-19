@@ -1,0 +1,16 @@
+import yaml
+import questionary
+
+# Load prompts from YAML file
+with open("prompts.yaml", "r") as f:
+    prompts = yaml.safe_load(f)
+
+# Prompt the user with each question and store their responses
+responses = {}
+for prompt in prompts:
+    question = prompt["question"]
+    answer = questionary.prompt(question)
+    responses[prompt["name"]] = answer
+
+# Print the responses
+print(responses)
